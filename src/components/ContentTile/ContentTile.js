@@ -3,6 +3,7 @@ import { Card, CardMedia, CardActionArea, CardHeader, CardActions, IconButton, w
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { normalizeBoolean } from '../../utils/normalize';
 import { FavoriteBorder } from '@material-ui/icons';
+import { withSnackbar } from 'notistack';
 
 const styles = (theme) => {
 	const __defines__ = {
@@ -85,6 +86,21 @@ class ContentTile extends React.Component {
 
 	toggleFavorite() {
 		this.setState({isFavorite: !this.state.isFavorite});
+		
+		if (!this.state.isFavorite) { 
+			this.props.enqueueSnackbar('נשמר למועדפים!', {
+				autoHideDuration: 3000,
+				variant: 'success',
+				anchorOrigin: { horizontal: 'right', vertical: 'top' }
+			});
+		}
+		else {
+			this.props.enqueueSnackbar('נמחק מהמועדפים', {
+				autoHideDuration: 3000,
+				variant: 'info',
+				anchorOrigin: { horizontal: 'right', vertical: 'top' }
+			});
+		}
 	}
 
 	toggleDescriptionPanel() {
@@ -138,6 +154,6 @@ class ContentTile extends React.Component {
 			</Card>
 		);
 	}
-}	
+} 
 
-export default withStyles(styles)(ContentTile);
+export default withSnackbar(withStyles(styles)(ContentTile));
