@@ -128,28 +128,29 @@ class ContentTile extends React.Component {
 							}
 						</IconButton>
 					}
-					title="ליגת מיטב - סיכום מדדים"
+					title={this.props.title}
 					/>
 				<CardActionArea onMouseEnter={()=>this.toggleDescriptionPanel()} onMouseLeave={()=>this.toggleDescriptionPanel()}>
 					<Card align="right" elevation={0} className={classes.descriptionContainer}>
 						<Collapse in={this.state.hovered}>
 							<CardMedia className={classes.media}
-								image={require(`../../assets/images/${'power-bi-report.png'}`).default}>
+								image={this.props.src}>
 							</CardMedia>
 						</Collapse>
 						<Typography component="pre" className={classes.descriptionText}>
-							{`סיכום מדדי ליגת מיטב
-							ציון כולל המורכב מאחוז מסיימי הליכים בהתייצבות ראשונה,
-							סה"כ זמני שהייה וציון מדדי איכות`}
+							{this.props.body}
 						</Typography>
 					</Card>
 				</CardActionArea>
 				<Divider/>
 				<CardActions disableSpacing="true" elevation={0} className={classes.footer}>
-				<Chip className={classes.chip} variant="outlined" size="small" label="#ליגת מיטב" color="primary"/>
-				<Chip className={classes.chip} variant="outlined" size="small" label="#ליגת מיטב" color="primary"/>
-				<Chip className={classes.chip} variant="outlined" size="small" label="#ליגת מיטב" color="primary"/>
-				<Chip className={classes.chip} variant="outlined" size="small" label="#ליגת מיטב" color="primary"/>
+				{
+					(this.props.tags === undefined) ? '' : this.props.tags.map(tag => {
+						return (
+							<Chip className={classes.chip} variant="outlined" size="small" label={tag} color="primary"/>
+						)
+					})
+				}
 				</CardActions>
 			</Card>
 		);
