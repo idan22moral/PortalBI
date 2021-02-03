@@ -4,9 +4,7 @@ import { SnackbarProvider } from 'notistack'
 
 function App() {
   return (
-	<div align="middle">
-		<br></br>
-		<br></br><br></br><br></br><br></br><br></br><br></br>
+	<div>
 	  <SnackbarProvider maxSnack={3} style={{direction:'rtl'}}>
 		<ContentTile />
 	  </SnackbarProvider>
