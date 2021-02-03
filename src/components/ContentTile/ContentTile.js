@@ -1,8 +1,7 @@
 import React from 'react';
 import { Card, CardMedia, CardActionArea, CardHeader, CardActions, IconButton, withStyles, Collapse, Typography, Chip, Divider } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import { normalizeBoolean } from '../../utils/normalize';
-import { FavoriteBorder } from '@material-ui/icons';
+import { Star, StarBorder } from '@material-ui/icons';
 import { withSnackbar } from 'notistack';
 
 const styles = (theme) => {
@@ -120,10 +119,9 @@ class ContentTile extends React.Component {
 							onClick={() => {this.toggleFavorite()}}>
 							{
 								this.state.isFavorite ? (
-									<FavoriteIcon className={classes.favoriteIcon}
-								color="secondary"/>
+									<Star className={classes.favoriteIcon} style={{color:'white'}}/>
 								) : (
-									<FavoriteBorder className={classes.favoriteIcon} />
+									<StarBorder className={classes.favoriteIcon} />
 								)
 							}
 						</IconButton>
